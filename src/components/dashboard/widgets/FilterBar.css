@@ -1,0 +1,19 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.filter-bar__search {
+  flex: 1;
+  min-width: 10rem;
+}
+
+.filter-bar__status {
+  min-width: 8rem;
+}
+
+.filter-bar__reset {
+  flex-shrink: 0;
+}

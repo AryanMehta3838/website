@@ -1,0 +1,50 @@
+.bar-chart {
+  min-width: 0;
+}
+
+.bar-chart__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bar-chart__empty {
+  margin: 0;
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+  background: var(--surface);
+  border-radius: 0.375rem;
+  border: 1px dashed var(--border);
+}
+
+.bar-chart__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bar-chart__grid {
+  stroke: var(--border);
+  stroke-dasharray: 2 2;
+  stroke-opacity: 0.6;
+}
+
+.bar-chart__tick {
+  font-size: 10px;
+  fill: var(--text-muted);
+}
+
+.bar-chart__baseline {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.bar-chart__bar {
+  fill: var(--primary);
+  opacity: 0.9;
+  stroke: var(--border);
+  stroke-width: 1px;
+}

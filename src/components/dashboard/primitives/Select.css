@@ -1,0 +1,37 @@
+.select-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.select-wrap__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.select-wrap__select {
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.select-wrap__select:hover:not(:disabled) {
+  border-color: var(--text-muted);
+}
+
+.select-wrap__select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.select-wrap__select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,0 +1,32 @@
+/*
+  Dashboard design tokens (scoped to avoid global CSS collisions).
+  - Light mode: default values on .demo-dashboard-shell
+  - Dark mode: overrides on .demo-dashboard-shell[data-theme="dark"]
+*/
+.demo-dashboard-shell {
+  --background: #ffffff;
+  --surface: #f3f4f6;
+  --surface-2: #ffffff;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --border: #e5e7eb;
+
+  --primary: #2563eb;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+}
+
+.demo-dashboard-shell[data-theme='dark'] {
+  --background: #0b1220;
+  --surface: #111827;
+  --surface-2: #0f172a;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #243244;
+
+  --primary: #60a5fa;
+  --success: #22c55e;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
