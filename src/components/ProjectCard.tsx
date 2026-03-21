@@ -1,4 +1,11 @@
+"use client";
+
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { Project, ProjectStatus } from "@/src/data/projects";
+import {
+  CARD_INTERACTION_DURATION,
+  SITE_EASE,
+} from "@/src/lib/animation/motion-config";
 
 export interface ProjectCardProps {
   project: Project;
@@ -16,7 +23,42 @@ const statusStyles: Record<ProjectStatus, string> = {
   archived: "bg-white/10 text-[#b0aeab] border-white/20",
 };
 
+const cardTransition = {
+  duration: CARD_INTERACTION_DURATION,
+  ease: SITE_EASE,
+};
+
+const cardVariants: Variants = {
+  rest: {
+    y: 0,
+    boxShadow:
+      "0 0 0 1px rgba(255,255,255,0.10), 0 4px 20px -8px rgba(0,0,0,0.35)",
+  },
+  hover: {
+    y: -3,
+    boxShadow:
+      "0 0 0 1px rgba(96,165,250,0.22), 0 16px 40px -12px rgba(0,0,0,0.5)",
+    transition: cardTransition,
+  },
+  tap: {
+    scale: 0.997,
+    transition: { duration: 0.12, ease: SITE_EASE },
+  },
+};
+
+const thumbVariants: Variants = {
+  rest: { scale: 1 },
+  hover: {
+    scale: 1.02,
+    transition: {
+      duration: CARD_INTERACTION_DURATION + 0.06,
+      ease: SITE_EASE,
+    },
+  },
+};
+
 export function ProjectCard({ project }: ProjectCardProps) {
+  const reduced = useReducedMotion();
   const {
     title,
     description,
@@ -30,26 +72,33 @@ export function ProjectCard({ project }: ProjectCardProps) {
   } = project;
 
   return (
-    <article
-      className="flex flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0f0f0f] transition-[border-color,background-color] duration-150 hover:border-white/15"
+    <motion.article
+      className="flex flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0f0f0f]"
       aria-labelledby={`project-title-${project.id}`}
+      variants={cardVariants}
+      initial="rest"
+      animate="rest"
+      whileHover={reduced ? undefined : "hover"}
+      whileTap={reduced ? undefined : "tap"}
     >
-      {/* Thumbnail or placeholder */}
-      <div className="relative aspect-video w-full shrink-0 bg-[#141414]">
-        {thumbnail ? (
-          <div
-            className="h-full w-full bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${thumbnail})` }}
-            aria-hidden
-          />
-        ) : (
-          <div
-            className="flex h-full w-full items-center justify-center text-[#3d3d3d] text-sm"
-            aria-hidden
-          >
-            No image
-          </div>
-        )}
+      {/* Thumbnail or placeholder — subtle zoom on card hover (variant inheritance). */}
+      <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-[#141414]">
+        <motion.div className="h-full w-full" variants={thumbVariants}>
+          {thumbnail ? (
+            <div
+              className="h-full w-full bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${thumbnail})` }}
+              aria-hidden
+            />
+          ) : (
+            <div
+              className="flex h-full w-full items-center justify-center text-[#3d3d3d] text-sm"
+              aria-hidden
+            >
+              No image
+            </div>
+          )}
+        </motion.div>
       </div>
 
       <div className="flex flex-1 flex-col p-4 sm:p-6">
@@ -145,6 +194,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { memo } from "react";
 import { HeroStaticFallback } from "./HeroStaticFallback";
 import { useHeroBackdropPolicy } from "./heroBackdropPolicy";
+import type { HeroWebGLVariant } from "./heroBackdropPolicy";
 
 const HeroWebGLCanvas = dynamic(
   () =>
@@ -12,6 +14,15 @@ const HeroWebGLCanvas = dynamic(
     loading: () => <HeroStaticFallback />,
   },
 );
+
+/** Isolated branch so home-page state changes don’t remount the GL root unnecessarily. */
+const HeroWebGLBranch = memo(function HeroWebGLBranch({
+  variant,
+}: {
+  variant: HeroWebGLVariant;
+}) {
+  return <HeroWebGLCanvas variant={variant} />;
+});
 
 /**
  * Hero Three.js backdrop wrapper: static fallback or dynamically loaded Canvas.
@@ -28,5 +39,5 @@ export function HeroScene() {
     return <HeroStaticFallback />;
   }
 
-  return <HeroWebGLCanvas variant={policy.variant} />;
+  return <HeroWebGLBranch variant={policy.variant} />;
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { HeroSection } from "@/src/components/hero/HeroSection";
+import { RevealSection } from "@/src/components/motion/RevealSection";
 import { ProjectCard } from "@/src/components/ProjectCard";
 import { projects, PROJECT_CATEGORIES } from "@/src/data/projects";
 
@@ -95,7 +96,7 @@ export default function Home() {
           </div>
         </HeroSection>
 
-        <section
+        <RevealSection
           id="featured-projects"
           className="border-t border-white/10 px-4 py-16 sm:px-6 sm:py-20"
           aria-label="Featured projects"
@@ -116,9 +117,9 @@ export default function Home() {
               ))}
             </ul>
           </div>
-        </section>
+        </RevealSection>
 
-        <section
+        <RevealSection
           id="all-projects"
           className="border-t border-white/10 px-4 py-16 sm:px-6 sm:py-20"
           aria-label="All projects"
@@ -168,9 +169,9 @@ export default function Home() {
               ))}
             </ul>
           </div>
-        </section>
+        </RevealSection>
 
-        <section
+        <RevealSection
           id="resume"
           className="border-t border-white/10 px-4 py-16 sm:px-6 sm:py-20"
           aria-label="Resume"
@@ -204,9 +205,9 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section
+        <RevealSection
           id="contact"
           className="border-t border-white/10 px-4 py-16 sm:px-6 sm:py-20"
           aria-label="Contact"
@@ -257,7 +258,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
-        </section>
+        </RevealSection>
       </main>
     </>
   );

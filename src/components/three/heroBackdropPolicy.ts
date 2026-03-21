@@ -41,7 +41,8 @@ export function useHeroBackdropPolicy(
   const [webglOk, setWebglOk] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Single client ping after hydration so mq/WebGL reads match the browser without SSR drift.
+    queueMicrotask(() => setMounted(true));
   }, []);
 
   useEffect(() => {
