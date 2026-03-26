@@ -31,6 +31,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "cashflow",
+    title: "CashFlow",
+    description:
+      "SaaS web app for independent landlords to track rental property income, expenses, and cash flow. Features AI-powered bank statement parsing, CSV import, per-property P&L reports, and a portfolio dashboard.",
+    category: "Web Apps",
+    techStack: ["Next.js", "TypeScript", "Supabase", "Claude API", "Tailwind CSS", "shadcn/ui"],
+    githubUrl: "https://github.com/AryanMehta3838/CashFlow",
+    downloadUrl: "https://github.com/AryanMehta3838/CashFlow",
+    liveDemoUrl: "https://cashflow.amehta.dev",
+    status: "completed",
+    featured: true,
+  },
+  {
     id: "solarscope",
     title: "SolarScope",
     description:
